@@ -11,16 +11,16 @@ class student
     double TotalMarks;
     void getinpt()
     {
-        cout<<"Enter student details:- "<<endl;
+        cout<<"Enter student details :- "<<endl;
         cout<<"\nEnter student roll number: ";
         cin>>Rollno;
-        cout<<"Enter student year: ";
+        cout<<"Enter student year : ";
         cin>>Year;
-        cout<<"Enter student name: ";
+        cout<<"Enter student name : ";
         cin>>Name;
-        cout<<"Enter student class: ";
+        cout<<"Enter student class : ";
         cin>>Class;
-        cout<<"Enter student total marks: ";
+        cout<<"Enter student total marks : ";
         cin>>TotalMarks;
     }
 };

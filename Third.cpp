@@ -1,66 +1,81 @@
 #include <iostream>
-#include <math.h>
+#include <cmath>
 using namespace std;
+
 class Triangle
 {
-    private:
-    float   area;
-    public:
-    Triangle()
+private:
+    float a, b, c, h;
+
+public:
+    Triangle() {}
+
+    Triangle(float a, float b, float c)
     {
-        area=0;
+        this->a = a;
+        this->b = b;
+        this->c = c;
     }
-    void triangleArea(float a);
-    void triangleArea(float a,float b);
-    void triangleArea(float a,float b,float c);
-    Triangle operator=(Triangle o2);
-    int operator == (Triangle o2);
-    void display()
+    Triangle(float b, float h)
     {
-        cout<<"The area of triangle is: "<<area<<endl;
+        this->b = b;
+        this->h = h;
+    }
+
+    float area()
+    {
+        return area(this->a, this->b, this->c);
+    }
+
+    float area(float a, float b, float c)
+    {
+        float p = (a + b + c) / 2;
+        return sqrt(p * (p - a) * (p - b) * (p - c));
+    }
+
+    // overloaded functions
+    float area(float b, float h)
+    {
+        return (b + h) / 2;
+    }
+    // Overload assignment operator
+    Triangle &operator=(const Triangle &triangle)
+    {
+        // do the copy
+        this->a = triangle.a;
+        this->b = triangle.b;
+        this->c = triangle.c;
+        return *this;
+    }
+
+    // equality operator.
+    friend bool operator==(const Triangle &t1, const Triangle &t2)
+    {
+        return (t1.a == t2.a && t1.b == t2.b && t1.c == t2.c);
     }
 };
-void Triangle::triangleArea(float a)
-{
-    area= (sqrt(3)/4)*a*a;
-    cout<<"Area of an equilateral triangle is: "<<area<<endl;
-}
-void Triangle::triangleArea(float a, float b)
-{
-    area=0.5*a*b;
-    cout<<"Area of an isosceles triangle is: "<<area<<endl;
-}
-void Triangle::triangleArea(float a, float b, float c)
-{
-    float s= (a+b+c)/2;
-    float m=(s-a)*(s-b)*(s-c);
-    area=sqrt(m);
-    cout<<"Area of a scalene triangle is: "<<area<<endl;
-}
-Triangle Triangle::operator=(Triangle o2)
-{
-    area=o2.area;
-    return o2;
-}
-int Triangle::operator==(Triangle o2)
-{
-    if(area==o2.area)
-    return 1;
-    else
-    return 0;
-}
+
 int main()
 {
-    Triangle o1,o2,o3,o4;
-    o1.triangleArea(6);
-    o2.triangleArea(8.7,5.2);
-    o3.triangleArea(9,7,2);
-    o4=o1;
-    o4.display();
-    o1.display();
-    if(o1==o4)
-    cout<<"\nArea is equal. "<<endl;
+    Triangle t1(18, 30, 24);
+    cout << "Area of the tringle with sides : " << t1.area(18, 30, 24) << "\n";
+
+    Triangle t2;
+    cout << "Area of the tringle with base and height : " << t2.area(24, 18) << "\n";
+    ;
+
+    Triangle tCopy = t1;
+
+    cout << "Area of the copy tringle " << tCopy.area() << "\n";
+
+    if (t1 == tCopy)
+    {
+        cout << "The triangles are equal.\n";
+    }
     else
-    cout<<"\nArea is not equal. "<<endl;
+    {
+        cout << "The triangles are not equal.\n";
+    }
+
     return 0;
 }

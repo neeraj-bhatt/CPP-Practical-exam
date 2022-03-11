@@ -4,7 +4,7 @@ using namespace std;
 class Matrix
 {
 public:
-    void transpose(vector<vector<int>> matrix)
+    void transpose(vector<vector<int> > matrix)
     {
 
         for (int i = 1; i < matrix.size(); i++)
@@ -27,9 +27,9 @@ public:
         
     }
 
-    void sum(vector<vector<int>> matrix1, vector<vector<int>> matrix2)
+    void sum(vector<vector<int> > matrix1, vector<vector<int>> matrix2)
     {
-        vector<vector<int>> matrix3;
+        vector<vector<int> > matrix3;
         cout << "The addition of the two matrixes : \n";
         for (int i = 0; i < matrix1.size(); i++)
         {
@@ -54,9 +54,9 @@ public:
         
     }
 
-    void product(vector<vector<int>> matrix1, vector<vector<int>> matrix2)
+    void product(vector<vector<int> > matrix1, vector<vector<int> > matrix2)
     {
-        vector<vector<int>> matrix3;
+        vector<vector<int> > matrix3;
         int sum = 0;
         cout << "The multiplication of the two matrices: \n";
 
@@ -95,7 +95,7 @@ int main()
     cout << "Enter the size of the matrix 1 : ";
     cin >> x >> y;
 
-    vector<vector<int>> matrix1;
+    vector<vector<int> > matrix1;
 
     cout << "Enter the matrix1 elements" << endl;
     for (int i = 0; i < x; i++)
@@ -112,7 +112,7 @@ int main()
     int n, m;
     cout << "Enter the size of the matrix 2 : ";
     cin >> n >> m;
-    vector<vector<int>> matrix2;
+    vector<vector<int> > matrix2;
     cout << "Enter the matrix2 elements" << endl;
     for (int i = 0; i < n; i++)
     {
@@ -165,6 +165,7 @@ int main()
             catch (int i)
             {
                 cout << "Disobey properties of matrix\n\n";
+                system("pause");
             }
 
             break;
